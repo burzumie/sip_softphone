@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setWindowIcon(QIcon(":images/icon.xpm"));
 
-    Config &config = Config::getInstance();
+    Config& config = Config::getInstance();
     phone::Settings settings;
     settings.port_ = config.getPhonePort();
     settings.stun_server_ = config.getPhoneStunServer();
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     phone::Phone phone(new phone::api::Sip());
     if( phone.init(settings) )
     {
-        Gui window(phone);
+        Gui window(phone, config);
         window.show();
         return a.exec();
     }

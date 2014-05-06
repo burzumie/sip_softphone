@@ -8,6 +8,8 @@
 
 #include "GUI_Handler.h"
 
+class Config;
+
 class Gui : public QMainWindow
 {
     Q_OBJECT
@@ -23,7 +25,7 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 public:
-    Gui(phone::Phone &phone, QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    Gui(phone::Phone &phone, Config& config, QWidget *parent = 0, Qt::WindowFlags flags = 0);
     virtual ~Gui();
 
 private slots:

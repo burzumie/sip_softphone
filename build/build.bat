@@ -4,3 +4,5 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
 qmake -makefile
 rem nmake clean
 nmake debug
+
+if not exist ../bin/win32/settings.conf.sample copy ..\src\settings.conf.sample ..\bin\win32\

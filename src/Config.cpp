@@ -16,14 +16,16 @@
 #include "phone/Phone.h"
 #include "Config.h"
 
-const QString Config::SETTINGS_FILE = "/.greenj/settings.conf";
+//const QString Config::SETTINGS_FILE = "/.greenj/settings.conf";
+const QString Config::SETTINGS_FILE = "./settings.conf";
 
 //-----------------------------------------------------------------------------
 Config::Config() :
-    file_name_(QDir::homePath() + SETTINGS_FILE), 
+    file_name_(/* QDir::homePath() + */ SETTINGS_FILE), 
     settings_(file_name_, QSettings::IniFormat)
 {
-    if( !QFile::exists(file_name_) ) {
+    if( !QFile::exists(file_name_) )
+    {
         settings_.clear();
         setDefaults();
     }
@@ -53,6 +55,12 @@ void Config::setDefaults()
     settings_.setValue("micro_level", 1.f);
     settings_.setValue("srtp", phone::Settings::SRTP_DISABLED);
     settings_.setValue("srtp_signaling", phone::Settings::SRTP_SIGNALING_TLS);
+    settings_.endGroup();
+
+    settings_.beginGroup("account");
+    settings_.setValue("login", "");
+    settings_.setValue("password", "");
+    settings_.setValue("server", "");
     settings_.endGroup();
 }
 
@@ -144,4 +152,19 @@ void Config::setOption(const QString &name, const QVariant &option)
     } else if (name == "log_level") {
         settings_.setValue("application/log_level", option.toInt());
     }
+}
+
+const QString Config::get_login() const
+{
+  return settings_.value("account/login", QVariant("")).toString();
+}
+
+const QString Config::get_password() const
+{
+  return settings_.value("account/password", QVariant("")).toString();
+}
+
+const QString Config::get_server() const
+{
+  return settings_.value("account/server", QVariant("")).toString();
 }

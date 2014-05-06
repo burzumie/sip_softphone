@@ -62,6 +62,11 @@ public:
      * @param option New data for the option
      */
     void setOption(const QString &name, const QVariant &option);
+
+    //
+    const QString get_login() const;
+    const QString get_password() const;
+    const QString get_server() const;
     
 private:
     static const QString SETTINGS_FILE;

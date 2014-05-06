@@ -24,6 +24,8 @@ private:
     phone::Phone& phone_;
     VoiceCall_Controls* vc_controls;
 
+    QString voip_server;
+
 public:
     static const QString OBJECT_NAME;
 
@@ -43,6 +45,11 @@ public:
 
     QWidget* get_main_widget();
 
+    QString get_voip_server() const
+    {
+      return voip_server;
+    }
+
 private slots:
     void slotLogMessage(const LogInfo& info) const;
 
@@ -51,7 +58,7 @@ public slots:
 
     QVariantMap getAccountInformation() const;
 
-    bool registerToServer(const QString& host, const QString& user_name, const QString& password) const;
+    bool registerToServer(const QString& host, const QString& user_name, const QString& password);
     void unregisterFromServer() const;
 
     int makeCall(const QString& number) const;   

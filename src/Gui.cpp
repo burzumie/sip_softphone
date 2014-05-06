@@ -9,7 +9,7 @@
 #include <QBoxLayout>
 
 //-----------------------------------------------------------------------------
-Gui::Gui(phone::Phone &phone, QWidget *parent, Qt::WindowFlags flags) :
+Gui::Gui(phone::Phone &phone, Config& config, QWidget *parent, Qt::WindowFlags flags) :
     QMainWindow(parent, flags),
     phone_(phone)
 {
@@ -27,10 +27,14 @@ Gui::Gui(phone::Phone &phone, QWidget *parent, Qt::WindowFlags flags) :
             this,    SLOT(slotIncomingCall(const QString&, const QVariantMap&)));
 
   //
-  QString host = "192.168.1.106";
-  QString login = "1001";
-  QString password = "";
-  gui_handler_->registerToServer(host, login, password);
+
+  QString host = config.get_server();
+  QString login = config.get_login();
+  QString password = config.get_password();
+  if( !host.isEmpty() )
+  {
+    gui_handler_->registerToServer(host, login, password);
+  }
 }
 
 //-----------------------------------------------------------------------------

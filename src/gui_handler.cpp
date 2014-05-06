@@ -130,8 +130,10 @@ QVariantMap GUI_Handler::getAccountInformation() const
 
 //-----------------------------------------------------------------------------
 bool GUI_Handler::registerToServer(const QString& host, const QString& user_name,
-                                         const QString& password) const
+                                         const QString& password)
 {
+  voip_server = host;
+
     LogHandler::getInstance().log(LogInfo(LogInfo::STATUS_DEBUG, "gui_handler", 0, "register"));
 
     Account acc;

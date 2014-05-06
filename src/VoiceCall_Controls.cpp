@@ -129,7 +129,7 @@ void VoiceCall_Controls::make_call()
 
   if( making_call )
   {
-    QString url = "sip:" + dest + "@192.168.1.106:5060";
+    QString url = "sip:" + dest + "@" + gui_handler->get_voip_server();
     active_call_id = gui_handler->makeCall( url );
 
     QString ll = ( "Calling '" + url + "'" );
