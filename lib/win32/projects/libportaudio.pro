@@ -29,3 +29,9 @@ SOURCES += common/pa_allocation.c \
            os/win/pa_win_waveformat.c \
            os/win/pa_win_wdmks_utils.c \
            os/win/pa_x86_plain_converters.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

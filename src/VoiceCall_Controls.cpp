@@ -48,7 +48,15 @@ void VoiceCall_Controls::registered(bool b)
   ui->pushButton->setEnabled(b);
 
   QVariantMap account_info = gui_handler->getAccountInformation();
-  ui->label_info->setText("Registered as: '" +  account_info["address"].toString() + "'");
+
+  if( b )
+  {
+    ui->label_info->setText("Registered as: '" +  account_info["address"].toString() + "'");
+  }
+  else
+  {
+    ui->label_info->clear();
+  }
 }
 
 void VoiceCall_Controls::update_ui()

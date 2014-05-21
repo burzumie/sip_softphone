@@ -13,6 +13,8 @@
 #include <QString>
 #include <QMessageBox>
 
+#include <iostream>
+
 //
 using phone::Phone;
 using phone::Call;
@@ -29,6 +31,11 @@ GUI_Handler::GUI_Handler(Phone& phone)
   vc_controls = new VoiceCall_Controls(this);
 }
 
+GUI_Handler::~GUI_Handler()
+{
+  this->hangupAll();
+}
+
 QWidget* GUI_Handler::get_main_widget()
 {
   return vc_controls;
@@ -38,6 +45,8 @@ QWidget* GUI_Handler::get_main_widget()
 void GUI_Handler::accountStateChanged(const int state) const
 {
 // !!!
+std::cout << "State of account changed to '" << state << "'" << std::endl;
+
   bool rr = bool(state == 200);
   vc_controls->registered(rr);
 
@@ -52,7 +61,9 @@ void GUI_Handler::callState(const int call_id, const int code,
                                   const int last_status) const
 {
 // !!!
-//    QMessageBox::information(vc_controls, "Information", "State from call '" + QString::number(call_id) + "' changed from '" + QString::number(last_status) + "' to '" + QString::number(code) + "'");
+//    QMessageBox::information(vc_controls, "Information", "State of call '" + QString::number(call_id) + "' changed from '" + QString::number(last_status) + "' to '" + QString::number(code) + "'");
+
+std::cout << "State of call '" << call_id << "' changed from '" << last_status << "' to '" << code << "'" << std::endl;
 
 /*
     // from 'phone-lib.js'

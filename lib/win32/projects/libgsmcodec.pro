@@ -26,3 +26,9 @@ SOURCES += add.c \
            rpe.c \
            short_term.c \
            table.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

@@ -9,3 +9,9 @@ INCLUDEPATH += ../include
 INCLUDEPATH += ../../build/resample
 
 SOURCES += resamplesubs.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

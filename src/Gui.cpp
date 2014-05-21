@@ -42,6 +42,7 @@ Gui::~Gui()
 {
   gui_handler_->unregisterFromServer();
 
+  phone_.set_GUI_Handler(NULL);
     delete gui_handler_;
 }
 

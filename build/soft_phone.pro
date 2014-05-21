@@ -2,16 +2,24 @@ TEMPLATE = app
 CONFIG += qt console
 QT += core gui widgets multimedia network
 
+# workaround against link error LNK1123, which appears if .NET4.5 is present in system
+# also rename "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\cvtres.exe" to something else, for example "cvtres_old.exe"
+win32: QMAKE_LFLAGS += /INCREMENTAL:NO
+
 Debug:   TARGET = soft_phone.debug
 Release: TARGET = soft_phone.release
 
 win32 {
   DESTDIR = ../bin/win32
   LIBDIR = ../lib/win32
-  BUILDDIR = ../build/win32
+#Debug:     BUILDDIR = ../build/debug
+#Release:     BUILDDIR = ../build/release
   PJSIP_DIR = ../lib/win32/pjsip
 Debug:   PJSIP_TARGET = i386-Win32-vc10-Debug
 Release: PJSIP_TARGET = i386-Win32-vc10-Release
+
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
 }
 
 SOURCEDIR = ../src

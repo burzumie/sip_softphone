@@ -17,3 +17,9 @@ SOURCES += sip_100rel.c \
            sip_replaces.c \
            sip_timer.c \
            sip_xfer.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

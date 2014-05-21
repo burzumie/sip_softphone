@@ -18,3 +18,9 @@ SOURCES += audiodev.c \
            null_dev.c \
            pa_dev.c \
            wmme_dev.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

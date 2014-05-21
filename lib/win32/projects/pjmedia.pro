@@ -80,3 +80,9 @@ SOURCES += alaw_ulaw.c \
            wav_writer.c \
            wave.c \
            wsola.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

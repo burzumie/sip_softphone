@@ -27,3 +27,9 @@ SOURCES += amr_sdp_match.c \
            speex_codec.c \
            g722/g722_dec.c \
            g722/g722_enc.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

@@ -30,3 +30,9 @@ SOURCES += anaFilter.c \
            StateConstructW.c \
            StateSearchW.c \
            syntFilter.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

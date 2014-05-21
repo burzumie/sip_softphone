@@ -34,3 +34,9 @@ SOURCES += pjlib/srtp_err.c \
            crypto/rng/ctr_prng.c \
            crypto/rng/prng.c \
            crypto/rng/rand_source.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

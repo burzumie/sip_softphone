@@ -21,3 +21,9 @@ SOURCES += pjsua_acc.c \
            pjsua_media.c \
            pjsua_pres.c \
            pjsua_vid.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

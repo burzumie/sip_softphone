@@ -19,3 +19,9 @@ SOURCES += main.c \
            pjsua_app_common.c \
            pjsua_app_config.c \
            pjsua_app_legacy.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

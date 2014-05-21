@@ -35,3 +35,9 @@ SOURCES += sip_auth_aka.c \
            sip_transaction.c \
            sip_util_statefull.c \
            sip_ua_layer.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

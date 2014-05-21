@@ -19,3 +19,9 @@ SOURCES += common/basic_op.c \
            encode/dct4_a.c \
            encode/encoder.c \
            encode/sam2coef.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

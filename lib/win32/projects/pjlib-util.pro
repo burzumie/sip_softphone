@@ -38,3 +38,9 @@ SOURCES += base64.c \
            stun_simple_client.c \
 #           symbols.c \
            xml.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

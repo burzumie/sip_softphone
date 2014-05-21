@@ -31,6 +31,7 @@ public:
 
     //
     GUI_Handler(phone::Phone& phone);
+    ~GUI_Handler();
 
     void accountStateChanged(const int state) const;
     void callState(const int call_id, const int code, const int last_status) const;

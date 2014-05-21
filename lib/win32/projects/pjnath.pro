@@ -22,3 +22,9 @@ SOURCES += errno.c \
            stun_transaction.c \
            turn_session.c \
            turn_sock.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}

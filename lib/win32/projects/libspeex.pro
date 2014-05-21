@@ -48,3 +48,9 @@ SOURCES += libspeex/bits.c \
            libspeex/vbr.c \
            libspeex/vq.c \
            libspeex/window.c
+
+win32
+{
+# include debug info into .lib, not in .pdb
+Debug: QMAKE_LFLAGS += /Z7
+}
